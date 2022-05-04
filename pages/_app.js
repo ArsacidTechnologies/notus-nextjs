@@ -31,16 +31,16 @@ export default class MyApp extends App {
     let comment = document.createComment(`
 
 =========================================================
-* Notus NextJS - v1.1.0 based on Tailwind Starter Kit by Creative Tim
+* Arsacid Technologies - v1.1.0 based on Tailwind Starter Kit byMehranRastgar
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/notus-nextjs
-* Copyright 2021 Creative Tim (https://www.creative-tim.com)
+* Product Page: https://www.MehranRastgar.com/product/notus-nextjs
+* Copyright 2021MehranRastgar (https://www.MehranRastgar.com)
 * Licensed under MIT (https://github.com/creativetimofficial/notus-nextjs/blob/main/LICENSE.md)
 
-* Tailwind Starter Kit Page: https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation
+* Tailwind Starter Kit Page: https://www.MehranRastgar.com/learning-lab/tailwind-starter-kit/presentation
 
-* Coded by Creative Tim
+* Coded byMehranRastgar
 
 =========================================================
 
@@ -70,7 +70,7 @@ export default class MyApp extends App {
             name="viewport"
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <title>Notus NextJS by Creative Tim</title>
+          <title>Arsacid Technologies byMehranRastgar</title>
           <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
         </Head>
         <Layout>

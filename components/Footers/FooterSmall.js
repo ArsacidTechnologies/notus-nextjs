@@ -17,10 +17,10 @@ export default function FooterSmall(props) {
               <div className="text-sm text-blueGray-500 font-semibold py-1 text-center md:text-left">
                 Copyright © {new Date().getFullYear()}{" "}
                 <a
-                  href="https://www.creative-tim.com?ref=nnjs-footer-small"
+                  href="https://www.MehranRastgar.com?ref=nnjs-footer-small"
                   className="text-white hover:text-blueGray-300 text-sm font-semibold py-1"
                 >
-                  Creative Tim
+                 MehranRastgar
                 </a>
               </div>
             </div>
@@ -28,15 +28,15 @@ export default function FooterSmall(props) {
               <ul className="flex flex-wrap list-none md:justify-end  justify-center">
                 <li>
                   <a
-                    href="https://www.creative-tim.com?ref=nnjs-footer-small"
+                    href="https://www.MehranRastgar.com?ref=nnjs-footer-small"
                     className="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
                   >
-                    Creative Tim
+                   MehranRastgar
                   </a>
                 </li>
                 <li>
                   <a
-                    href="https://www.creative-tim.com/presentation?ref=nnjs-footer-small"
+                    href="https://www.MehranRastgar.com/presentation?ref=nnjs-footer-small"
                     className="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
                   >
                     About Us
@@ -44,7 +44,7 @@ export default function FooterSmall(props) {
                 </li>
                 <li>
                   <a
-                    href="http://blog.creative-tim.com?ref=nnjs-footer-small"
+                    href="http://blog.MehranRastgar.com?ref=nnjs-footer-small"
                     className="text-white hover:text-blueGray-300 text-sm font-semibold block py-1 px-3"
                   >
                     Blog
