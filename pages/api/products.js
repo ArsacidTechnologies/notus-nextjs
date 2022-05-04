@@ -12,8 +12,10 @@ export default async function handler(req, res) {
 			},}
 		let text 		= 	req.query?.text
 		let page 		= 	req.query?.page
+		var sort = req.query?.sort ? `&sort=${req.query?.sort}`: "";
+		var sortType = req.query?.sortType ? `&sortType=${req.query?.sortType}`: "";
 
-		var uri = `${GET_Products}/?text=${text}&page=${page}`
+		var uri = `${GET_Products}/?text=${text}&page=${page}${sort}${sortType}`
 		var URI = encodeURI(uri); 
 		console.log(URI)
 		const {data:response} = await axios.get(

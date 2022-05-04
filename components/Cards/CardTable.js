@@ -5,13 +5,44 @@ import PropTypes from "prop-types";
 
 import TableDropdown from "components/Dropdowns/TableDropdown.js";
 
-export default function CardTable({ color, name, items }) {
+function howMuchIsReady(product)
+{ 
+  var percentage = 100
+  if(!product.main?.sku) 
+   percentage-=10 
+  if(!product.main?.images[0]) 
+   percentage-=10 
+   if(!product.main.images[10]) 
+   percentage-=5
+   if(!product.main.images[15]) 
+   percentage-=5
+   if(!product.main.description) 
+   percentage-=20 
+   if(!product.default_variant.warranty.title_fa) 
+   percentage-=20 
+   if(!product.main.title_fa) 
+   percentage-=10 
+   if(!product.main.title_en) 
+   percentage-=10 
+   if(!product.default_variant.review) 
+   percentage-=10 
+  if(!product.default_variant.category.code) 
+   percentage-=10 
+   if(!product.main.prices.price) 
+   percentage-=10 
+   if(product.main.status=="draft") 
+   percentage-=20 
+   if(product.main.status=="review") 
+   percentage-=10   
+  return String(percentage)+"%"
+}
+export default function CardTable({ color, name, items, pageNumber }) {
   return (
     <>
       <div
         className={
           "relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded " +
-          (color === "light" ? "bg-white" : "bg-blueGray-700 text-white")
+          (color === "light" ? "bg-pink-azini" : "bg-blueGray-700 text-white")
         }
       >
         <div className="rounded-t mb-0 px-4 py-3 border-0">
@@ -23,7 +54,7 @@ export default function CardTable({ color, name, items }) {
                   (color === "light" ? "text-blueGray-700" : "text-white")
                 }
               >
-                Products
+                Products - page : {pageNumber}
               </h3>
             </div>
           </div>
@@ -148,11 +179,11 @@ export default function CardTable({ color, name, items }) {
                       </td>
                       <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                         <div className="flex items-center">
-                          <span className="mr-2">60%</span>
+                          <span className="mr-2">{howMuchIsReady(product)}</span>
                           <div className="relative w-full">
                             <div className="overflow-hidden h-2 text-xs flex rounded bg-red-200">
                               <div
-                                style={{ width: "60%" }}
+                                style={{ width: `${howMuchIsReady(product)}` }}
                                 className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-red-500"
                               ></div>
                             </div>
