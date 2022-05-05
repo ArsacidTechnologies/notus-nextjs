@@ -3,28 +3,37 @@ import { useState, useEffect } from "react";
 
 // components
 
-export default function ProductEdit({setIsProductEdit, item}) {
-	var product = item
+export default function ProductEdit({ setIsProductEdit, item }) {
+  var product = item;
   return (
     <>
       <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg mt-16">
-	  <button
-              className="w-5/12 p-2 m-2 text-white bg-blueGray-600 rounded-lg border "
-              type="button"
-              onClick={(e) => {
-				setIsProductEdit(false);
-			  }}
-            >
-              Prev
-            </button>
-	    <div className="px-6">
+        <button
+          className="w-1/12 p-2 m-2 text-white bg-blueGray-600 rounded-lg border "
+          type="button"
+          onClick={(e) => {
+            setIsProductEdit(false);
+          }}
+        >
+          Prev
+        </button>
+        <button
+          className="w-1/12 p-2 m-2 text-white bg-blueGray-600 rounded-lg border "
+          type="button"
+          onClick={(e) => {
+            setIsProductEdit(false);
+          }}
+        >
+          next
+        </button>
+        <div className="px-6">
           <div className="flex flex-wrap justify-center">
             <div className="w-full px-4 flex justify-center">
               <div className="relative">
                 <img
                   alt="..."
-				  src={`https://api.bugtech.ir/api/image?x=80&y=80&q=100&t=webp&path=${product?.main?.images[0]}`}
-                  className="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
+                  src={`https://api.bugtech.ir/api/image?x=270&y=270&q=100&t=avif&path=${product?.main?.images[0]}`}
+                  className="shadow-xl rounded h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px"
                 />
               </div>
             </div>
