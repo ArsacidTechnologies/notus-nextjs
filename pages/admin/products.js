@@ -11,15 +11,18 @@ import CardSocialTraffic from "components/Cards/CardSocialTraffic.js";
 
 import Management from "layouts/Management.js";
 import CardTable from "components/Cards/CardTable";
+import ProductEdit from "components/Cards/ProductEdit";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 function getProducts(setProducts, pageNumber, searchText, sortBy, sortType) {
   var qtext = searchText ?? "";
-  var qsort = sortBy ? `&sort=${sortBy}`: "";
-  var qsortType = sortType ? `&sortType=${sortType}`: "";  
+  var qsort = sortBy ? `&sort=${sortBy}` : "";
+  var qsortType = sortType ? `&sortType=${sortType}` : "";
   axios
-    .get(`https://cms.bugtech.ir/api/products?text=${qtext}&page=${pageNumber}${qsort}${qsortType}`)
+    .get(
+      `https://cms.bugtech.ir/api/products?text=${qtext}&page=${pageNumber}${qsort}${qsortType}`
+    )
     .then((response) => {
       setProducts(response.data);
       console.log("this is props", response.data?.main?.images.length);
@@ -31,11 +34,15 @@ export default function Products() {
   const [pageNumber, setPageNumber] = useState(0);
   const [searchText, setSearchText] = useState("");
   const [sortBy, setSortBy] = useState("");
-  const [sortType, setSortType] = useState("asce");  
+  const [sortType, setSortType] = useState("asce");
+  const [isProductEdit, setIsProductEdit] = useState(false);
+  const [itemToEdit, setItemToEdit] = useState(false);
+
+
 
   const enterChecker = (event) => {
     if (event.keyCode === 13) {
-      //console.log('enter',searchQuery)
+      setPageNumber(0);
       getProducts(setProducts, pageNumber, searchText, sortBy);
     }
   };
@@ -45,7 +52,6 @@ export default function Products() {
     console.log(products);
   }, [pageNumber, sortBy, sortType]);
 
-
   const isActive = (index) => {
     if (tab === index) return "border-2 border-rose-500";
     return "border-2";
@@ -54,10 +60,11 @@ export default function Products() {
   return (
     <>
       <div className="flex flex-wrap">
-        <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded px-4">
+      {!isProductEdit ?     
+      <div className="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded px-4">
           <div className="relative flex flex-row min-w-0 break-words w-11/12 mb-6 shadow-lg rounded px-4">
             <button
-              className=" p-2 m-2 "
+              className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
               type="button"
               onClick={(event) => {
                 if (pageNumber > 0) {
@@ -74,8 +81,9 @@ export default function Products() {
               value={pageNumber}
               defaultValue={pageNumber}
             ></input>
+
             <button
-              className="p-2 m-2 "
+              className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
               onClick={(event) => {
                 if (products?.length > 19) {
                   setPageNumber(pageNumber + 1), setProducts({});
@@ -94,23 +102,46 @@ export default function Products() {
               placeholder="Search"
             />
           </div>
-          <div className="relative flex flex-row min-w-0 break-words w-11/12 mb-6 shadow-lg rounded px-4"  onChange={(event) => setSortBy(event.target.value)}>
-            <input type="radio" value="date" name="sort" /> <lable className="px-4">date modified</lable>
-            <input type="radio" value="price" name="sort" /> <lable className="px-4">price</lable>
-            <input type="radio" value="cat" name="sort" /> <lable className="px-4">category</lable>
+          <div
+            className="relative flex flex-row min-w-0 break-words w-11/12 mb-6 shadow-lg rounded px-4"
+            onChange={(event) => {
+              setSortBy(event.target.value), setPageNumber(0);
+            }}
+          >
+            <input type="radio" value="date" name="sort" />{" "}
+            <a className="px-4">date modified</a>
+            <input type="radio" value="price" name="sort" />{" "}
+            <a className="px-4">price</a>
+            <input type="radio" value="cat" name="sort" />{" "}
+            <a className="px-4">category</a>
           </div>
-          <div className="relative flex flex-row min-w-0 break-words w-11/12 mb-6 shadow-lg rounded px-4"  onChange={(event) => setSortType(event.target.value)}>
-            <input type="radio" value="desc" name="sort2" /> <lable className="px-4">desc</lable>
-            <input type="radio" value="asce" name="sort2" /> <lable className="px-4">asce</lable>
+          <div
+            className="relative flex flex-row min-w-0 break-words w-11/12 mb-6 shadow-lg rounded px-4"
+            onChange={(event) => {
+              setSortType(event.target.value), setPageNumber(0);
+            }}
+          >
+            <input type="radio" value="desc" name="sort2" />{" "}
+            <a className="px-4">desc</a>
+            <input type="radio" value="asce" name="sort2" />{" "}
+            <a className="px-4">asce</a>
           </div>
-        </div>
+        </div> :<br></br>}
         <div className="w-full mb-12 px-4">
-          <CardTable
+        {!isProductEdit ?   
+            <CardTable
+            setIsProductEdit={setIsProductEdit}
+            setItemToEdit={setItemToEdit}
             color="dark"
             name="Products"
             items={products}
             pageNumber={pageNumber}
-          />
+          />: 
+          <ProductEdit
+          setIsProductEdit={setIsProductEdit}
+          
+          item={itemToEdit}
+          ></ProductEdit>}
         </div>
       </div>
     </>

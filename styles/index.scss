@@ -1,3 +1,68 @@
+@import "~tailwindcss/base";
+@import "~tailwindcss/components";
+@import "~tailwindcss/utilities";
+
+@import "../src/fonts/fonts.scss";
+
+// @import "03-components/layouts/footer";
+// @import "01-settings/typography";
+// @import "03-components/elements/list";
+
+.fade-anim img {
+  animation: fadeAnim 1.5s ease-in;
+}
+@keyframes fadeAnim {
+  from {
+    filter: blur(8px);
+  }
+  to {
+    filter: blur(0px);
+  }
+}
+
+.demo-swiper .swiper-slide {
+  font-size: 55px;
+  font-weight: 300;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  color: #000;
+}
+
+.demo-swiper .swiper-slide {
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.demo-swiper {
+  margin: 0px 0 35px;
+  font-size: 18px;
+  height: 120px;
+}
+
+.demo-swiper.demo-swiper-auto .swiper-slide {
+  width: 85%;
+}
+
+.demo-swiper.demo-swiper-auto .swiper-slide:nth-child(2n) {
+  width: 70%;
+}
+
+.demo-swiper.demo-swiper-auto .swiper-slide:nth-child(3n) {
+  width: 30%;
+}
+
+
+
+
+
+
+
+
+
+
 /*! tailwindcss v2.0.4 | MIT License | https://tailwindcss.com */
 
 /*! modern-normalize v1.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
@@ -588,8 +653,8 @@ select {
   background-repeat: no-repeat;
   background-size: 1.5em 1.5em;
   padding-right: 2.5rem;
-  -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+  -webkit-print-print-color-adjust: exact;
+          print-color-adjust: exact;
 }
 
 [multiple] {
@@ -598,8 +663,8 @@ select {
   background-repeat: unset;
   background-size: initial;
   padding-right: 0.75rem;
-  -webkit-print-color-adjust: unset;
-          color-adjust: unset;
+  -webkit-print-print-color-adjust: unset;
+          print-color-adjust: unset;
 }
 
 
@@ -609,8 +674,8 @@ select {
   -webkit-appearance: none;
           appearance: none;
   padding: 0;
-  -webkit-print-color-adjust: exact;
-          color-adjust: exact;
+  -webkit-print-print-color-adjust: exact;
+          print-color-adjust: exact;
   display: inline-block;
   vertical-align: middle;
   background-origin: border-box;

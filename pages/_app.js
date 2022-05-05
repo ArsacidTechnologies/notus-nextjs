@@ -3,11 +3,14 @@ import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
 import Router from "next/router";
-
+import "../styles/index.scss";
+import "../styles/nprogress.css";
 import PageChange from "components/PageChange/PageChange.js";
+import nProgress from "nprogress";
 
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "styles/tailwind.css";
+Router.events.on("routeChangeStart", nProgress.start);
+Router.events.on("routeChangeError", nProgress.done);
+Router.events.on("routeChangeComplete", nProgress.done);
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
